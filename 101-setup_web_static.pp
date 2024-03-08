@@ -70,7 +70,7 @@ file { '/var/www':
 
 -> file { '/var/www/html/index.html':
   ensure  => 'present',
-  content => "This is my first upload  in /var/www/index.html***\n"
+  content => "This is my first upload  in /var/www/index.html*\n"
 }
 
 -> file { '/var/www/html/404.html':
