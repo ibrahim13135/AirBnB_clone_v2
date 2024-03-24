@@ -1,0 +1,1 @@
+ web frameworks simplify the process of building web applications by providing developers with a structured and organized environment, reducing the need for repetitive tasks, and promoting best practices in web development.
