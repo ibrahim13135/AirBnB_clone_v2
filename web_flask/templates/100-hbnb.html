@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HBNB</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/3-header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/4-common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/6-filters.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/8-places.css') }}">
+</head>
+
+<body>
+    <header class="full">
+        {% block header %}
+        {% include '3-header.html' %}
+        {% endblock %}
+    </header>
+    <div class="container">
+        <section class="filters">
+            <div class="cities">
+                <h3>States</h3>
+                <div class="popover">
+                    <h4>&nbsp;</h4>
+                    <ul>
+                        {% for state in states %}
+                        <li>{{ state.id }}: <b>{{ state.name }}</b>
+                            <ul>
+                                {% for city in state.cities %}
+                                <li>{{ city.id }}: <b>{{ city.name }}</b></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="amenities">
+                <h3>Amenities</h3>
+                <div class="popover">
+                    <h4>&nbsp;</h4>
+                    <ul>
+                        {% for amenity in amenities %}
+                        <li>{{ amenity.id }}: <b>{{ amenity.name }}</b></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="places">
+            {% block places %}
+            {% for place in places %}
+            <article>
+                <div class="place-price">
+                    <div class="price_by_night">${{ place.price_by_night }}</div>
+                </div>
+                <div class="information">
+                    <div class="name">{{ place.name }}</div>
+                    <div class="description">{{ place.description }}</div>
+                </div>
+            </article>
+            {% endfor %}
+            {% endblock %}
+        </section>
+    </div>
+    <footer class="full">
+        {% block footer %}
+        {% include '3-footer.html' %}
+        {% endblock %}
+    </footer>
+</body>
+
+</html>
